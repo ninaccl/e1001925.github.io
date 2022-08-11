@@ -37,7 +37,7 @@ svg {
     background: rgb(180, 214, 177);
 }
 .snare-pad.active {
-    background: rgb(122, 145, 120);
+    background: rgb(0, 255, 0);
 }
 .hihat-pad {
     background: rgb(219, 84, 208);
