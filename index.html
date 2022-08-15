@@ -10,135 +10,44 @@
 <body>
     <div class="sequencer">
         <p><mark>规律点亮若干方块，点play，调整速度，开始freestyle</mark></p>
-        <div class="kick-track">
+        <div class="template-track" id="templatTrack" style="display: none;">
             <div class="controls">
-                <!--<h1>Kick</h1>-->
-                <button data-track="0" class="mute kick-volume">
+                <!-- <h1>Hihat</h1> -->
+                <button data-track="2" class="mute clap-volume" onclick="muteClicked(this)">
                     <i class="fas fa-volume-mute"></i>
                 </button>
-                <!--<select name="kick-select" id="kick-select">
-                    <option value="sound/kick-classic.wav">Classic Kick</option>
-                    <option value="sound/kick-808.wav">808 Kick</option>
-                    <option value="sound/kick-heavy.wav">Kick Heavy</option>
-                </select>-->
+                <select name="audio-select" id="audio-select" onchange="changeAudio(this)">
+                    <option value="sound/kick-classic.wav">kick-sound</option>
+                    <option value="sound/snare-acoustic01.wav">snare-sound</option>
+                    <option value="sound/hihat-acoustic01.wav">hihat-sound</option>
+                    <option value="sound/hihat-808.wav">hihat-sound-2</option>
+                    <option value="sound/clap.wav">clap-sound</option>
+                </select>
             </div>
-            <div class="kick">
-                <div class="pad kick-pad b0"></div>
-                <div class="pad kick-pad b1"></div>
-                <div class="pad kick-pad b2"></div>
-                <div class="pad kick-pad b3"></div>
-                <div class="pad kick-pad b4"></div>
-                <div class="pad kick-pad b5"></div>
-                <div class="pad kick-pad b6"></div>
-                <div class="pad kick-pad b7"></div>
+            <div class="pad-list">
+                <div class="pad b0" onclick="barClicked(this)" onanimationend="this.style.animation = ''"></div>
+                <div class="pad b1" onclick="barClicked(this)" onanimationend="this.style.animation = ''"></div>
+                <div class="pad b2" onclick="barClicked(this)" onanimationend="this.style.animation = ''"></div>
+                <div class="pad b3" onclick="barClicked(this)" onanimationend="this.style.animation = ''"></div>
+                <div class="pad b4" onclick="barClicked(this)" onanimationend="this.style.animation = ''"></div>
+                <div class="pad b5" onclick="barClicked(this)" onanimationend="this.style.animation = ''"></div>
+                <div class="pad b6" onclick="barClicked(this)" onanimationend="this.style.animation = ''"></div>
+                <div class="pad b7" onclick="barClicked(this)" onanimationend="this.style.animation = ''"></div>
             </div>
-        </div>
-        
-        <div class="snare-track">
-            <div class="controls">
-                <!--<h1>Snare</h1>-->
-                <button data-track="1" class="mute snare-volume">
-                    <i class="fas fa-volume-mute"></i>
-                </button>
-                <!--<select name="snare-select" id="snare-select">
-                    <option value="sound/snare-acoustic01.wav">Classic Snare</option>
-                    <option value="sound/snare-808.wav">808 Snare</option>
-                    <option value="sound/snare-vinyl02.wav">Snare Vinyl</option>
-                </select>-->
-            </div>
-            <div class="snare">
-                <div class="pad snare-pad b0"></div>
-                <div class="pad snare-pad b1"></div>
-                <div class="pad snare-pad b2"></div>
-                <div class="pad snare-pad b3"></div>
-                <div class="pad snare-pad b4"></div>
-                <div class="pad snare-pad b5"></div>
-                <div class="pad snare-pad b6"></div>
-                <div class="pad snare-pad b7"></div>
-            </div>
-        </div>
-
-        <div class="hihat-track">
-            <div class="controls">
-                <!--<h1>Hihat</h1>-->
-                <button data-track="2" class="mute hihat-volume">
-                    <i class="fas fa-volume-mute"></i>
-                </button>
-                <!--<select name="hihat-select" id="hihat-select">
-                    <option value="sound/hihat-808.wav">808 Hihat</option>
-                </select>-->
-            </div>
-            <div class="hihat">
-                <div class="pad hihat-pad b0"></div>
-                <div class="pad hihat-pad b1"></div>
-                <div class="pad hihat-pad b2"></div>
-                <div class="pad hihat-pad b3"></div>
-                <div class="pad hihat-pad b4"></div>
-                <div class="pad hihat-pad b5"></div>
-                <div class="pad hihat-pad b6"></div>
-                <div class="pad hihat-pad b7"></div>
-            </div>
-        </div>
-
-        <div class="hihat-track-2">
-            <div class="controls">
-                <!--<h1>Hihat</h1>-->
-                <button data-track="2" class="mute hihat-volume">
-                    <i class="fas fa-volume-mute"></i>
-                </button>
-                <!--<select name="hihat-select" id="hihat-select">
-                    <option value="sound/hihat-acoustic01.wav">Classic Hihat</option>
-                </select>-->
-            </div>
-            <div class="hihat-2">
-                <div class="pad hihat-pad-2 b0"></div>
-                <div class="pad hihat-pad-2 b1"></div>
-                <div class="pad hihat-pad-2 b2"></div>
-                <div class="pad hihat-pad-2 b3"></div>
-                <div class="pad hihat-pad-2 b4"></div>
-                <div class="pad hihat-pad-2 b5"></div>
-                <div class="pad hihat-pad-2 b6"></div>
-                <div class="pad hihat-pad-2 b7"></div>
-            </div>
-        </div>
-
-        <div class="clap-track">
-            <div class="controls">
-                <!--<h1>Hihat</h1>-->
-                <button data-track="2" class="mute clap-volume">
-                    <i class="fas fa-volume-mute"></i>
-                </button>
-                <!--<select name="hihat-select" id="hihat-select">
-                    <option value="sound/hihat-808.wav">808 Hihat</option>
-                </select>-->
-            </div>
-            <div class="clap">
-                <div class="pad clap-pad b0"></div>
-                <div class="pad clap-pad b1"></div>
-                <div class="pad clap-pad b2"></div>
-                <div class="pad clap-pad b3"></div>
-                <div class="pad clap-pad b4"></div>
-                <div class="pad clap-pad b5"></div>
-                <div class="pad clap-pad b6"></div>
-                <div class="pad clap-pad b7"></div>
-            </div>
+            <button class="delete" onclick="deleteTrack(this)">delete</button>
+            <audio class="audio" src="sound/perc-808.wav"></audio>
         </div>
 
         <div class="tempo">
             <input type="range" class="tempo-slider" max="300" min="20" value="150">
             <p>Speed: <span class="tempo-nr">150</span></p>
         </div>
-        <button class="play">Play</button>
+        <div>
+            <button class="play">Play</button>
+            <button class="add" onclick="addTrack()">Add</button>
+        </div>
     </div>
 
-    <audio class="kick-sound" src="sound/kick-classic.wav" ></audio>
-    <audio class="snare-sound" src="sound/snare-acoustic01.wav" ></audio>
-    <audio class="hihat-sound" src="sound/hihat-acoustic01.wav" ></audio>
-    <audio class="hihat-sound-2" src="sound/hihat-808.wav" ></audio>
-    <audio class="clap-sound" src="sound/clap.wav" ></audio>
-
-
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
     <script src="asset/js/main.js"></script>
 </body>
